@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//componentes
+import GifExpertApp from './GifExpertApp';
+//estilos
 import './index.css';
-import App from './App';
+
 
 ReactDOM.render(
-  <App />,
+  <GifExpertApp />,
   document.getElementById('root')
 );
 
