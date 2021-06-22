@@ -1,30 +1,31 @@
 import React from 'react'
+import useFetchGifs from '../hooks/useFetchGifs'
+// import { getGifs } from '../helpers/getGifs';
+import GifGridItem from './GifGridItem';
 
 const GifGrid = ({category}) => {
 
+
+
+    // const [images,setImages] = useState([]);
+    const {data:images ,loading} = useFetchGifs(category);
+  
+
     
 
-    const getGifs = async()=>{
-        const url ='http://api.giphy.com/v1/gifs/search?q=rick and morty&limit=10&api_key=NaLulphlQpKOzfp5zxNP0hgrMdvOTEe1';
-        const resp = await fetch(url);
-        const {data} = await resp.json();
-
-        const gifs = data.map(img=>{
-            return{
-                id: img.id,
-                title: img.title,
-                url: img.images?.downsized_medium.url
-            }
-        })
-        console.log(gifs);
-
-        
-    }
-    getGifs();
+  
     
     return (
         <>
-            <h3>{category}</h3>
+        {loading && <p>cargando</p>}
+           
+            {
+                    images.map(img =>(
+                        <GifGridItem 
+                        key={img.id} 
+                        {...img}/>
+                    ))
+                }
         </>
     )
 }

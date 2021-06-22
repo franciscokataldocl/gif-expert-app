@@ -21,13 +21,13 @@ const [categories, setCategories] = useState(['Digimon']);
               
                 />
             <hr/>
-            <ol>
+            <div className="gifContainer">
                 {
                     categories.map(category =>(
-                        <GifGrid key={category} category={category}/>
+                        <GifGrid key={category} category={category} />
                     ))
                 }
-            </ol>
+            </div>
 
         </>
 

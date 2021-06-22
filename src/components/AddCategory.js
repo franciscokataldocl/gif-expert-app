@@ -6,7 +6,6 @@ const AddCategory = ({setCategories}) => {
 //estados
 const [inputValue, setinputValue] = useState('');
 
-
 //functions
 
 const handleInputChange = (e)=>{
@@ -20,22 +19,15 @@ const handleSubmit = (e)=>{
     e.preventDefault();
 
         if(inputValue.trim().length > 2){
-            setCategories(cats => [...cats, inputValue]);
+            //cats es un callback, el nombres puede ser cualquiera
+            //donde le pasamos dos valores, el valor anterior y el nuevo
+            setCategories((cats) => [inputValue, ...cats ]);
             setinputValue('')
-
         }
-
-
-   
-
 }
 
-
-
-
     return (
-        <>
-        
+    
         <form onSubmit={handleSubmit}>
             <input 
             type="text"
@@ -43,7 +35,7 @@ const handleSubmit = (e)=>{
             onChange={handleInputChange}
             />
         </form>
-        </>
+    
     )
 }
 AddCategory.propTypes = {
